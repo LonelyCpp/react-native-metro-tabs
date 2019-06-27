@@ -1,4 +1,4 @@
-#React Native Metro Tabs
+# React Native Metro Tabs
 
 A react native implementation for top-tabbed-navigation
 using guidelines provided by the beautiful Windows Phone (RIP)
