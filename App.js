@@ -27,7 +27,7 @@ export default class App extends Component {
           horizontal
           snapToAlignment={'center'}
           decelerationRate={0}
-          snapToInterval={Dimensions.get('window').width}
+          snapToInterval={this.WINDOW_WIDTH}
           data={[{ key: '1' }, { key: '2' }, { key: '3' }, { key: '4' }]}
           renderItem={({ item }) => (
             <Text
@@ -38,14 +38,13 @@ export default class App extends Component {
                 marginTop: 50,
                 fontSize: 30,
                 opacity: this.state.currentPage === item.key ? 1 : 0.4
-              }}
-            >
+              }} >
               Some header {item.key}
             </Text>
           )}
         />
         <FlatList
-          ref={screenList => (this.screenList = screenList)}
+          ref={screenList => this.screenList = screenList}
           horizontal
           snapToAlignment={'center'}
           decelerationRate={0}
