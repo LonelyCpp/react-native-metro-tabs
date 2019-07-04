@@ -49,7 +49,7 @@ export default class MetroTabs extends Component {
           horizontal
           snapToAlignment={'center'}
           decelerationRate={10}
-          snapToInterval={Dimensions.get('window').width}
+          snapToInterval={this.WINDOW_WIDTH}
           data={this.props.screens}
           scrollEnabled={false}
           showsHorizontalScrollIndicator={false}
@@ -61,7 +61,6 @@ export default class MetroTabs extends Component {
               <Text
                 style={{
                   color: 'white',
-                  // textAlign: 'center',
                   padding: 10,
                   width: this.HEADER_WIDTH,
                   marginTop: 20,
@@ -101,7 +100,6 @@ export default class MetroTabs extends Component {
   };
 
   headerPress = item => {
-    console.warn('????');
     this.setState({ currentPage: item.key });
     this.screenList.scrollToItem({ item: { key: item } });
   };
