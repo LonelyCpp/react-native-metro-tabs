@@ -51,6 +51,7 @@ export default class MetroTabs extends Component {
                 <Text
                   style={[
                     styles.tabText,
+                    { width: this.HEADER_WIDTH },
                     this.state.currentPage === item.key && styles.tabTextActive
                   ]}
                 >
@@ -113,7 +114,6 @@ const styles = StyleSheet.create({
   tabText: {
     color: "white",
     padding: 10,
-    width: this.HEADER_WIDTH,
     marginTop: 20,
     fontSize: 50,
     opacity: 0.4
