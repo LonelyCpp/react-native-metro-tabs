@@ -1,0 +1,62 @@
+[
+  { "title": "A", "data": ["Ara Mcquille", "Arcelia Sange"] },
+  { "title": "B", "data": ["Belia Mouzo", "Burl Benefiel"] },
+  { "title": "C", "data": ["Catarina Macarae", "Chong Fasan"] },
+  { "title": "D", "data": ["Darren Calli", "Deandra Cothro"] },
+  { "title": "E", "data": ["Edwardo Holt", "Emely Grunwal"] },
+  {
+    "title": "J",
+    "data": [
+      "Jamison Wei",
+      "Jannette Garrawa",
+      "Jeanice Mab",
+      "Jefferson Green",
+      "Jimmie Lombard"
+    ]
+  },
+  { "title": "K", "data": ["Katharyn Drysdal", "Kris Laske"] },
+  {
+    "title": "L",
+    "data": [
+      "Latanya Depau",
+      "Lavera Nettle",
+      "Letty Ut",
+      "Lisabeth Croyl",
+      "Lorena Mchug",
+      "Lorinda Ic"
+    ]
+  },
+  {
+    "title": "M",
+    "data": [
+      "Madalyn Kinze",
+      "Mahalia Echevarri",
+      "Maia Aher",
+      "Mardell Verrie",
+      "Marquitta Wirt",
+      "Maye Cuet",
+      "Mazie Palmor",
+      "Merna Fande",
+      "Milo Dewal",
+      "Mina Banniste"
+    ]
+  },
+  { "title": "N", "data": ["Noella Sidene", "Nona Mckinn"] },
+  { "title": "P", "data": ["Pamella Ovall"] },
+  {
+    "title": "R",
+    "data": [
+      "Robbin Elmendor",
+      "Rossana Reynol",
+      "Roxy Crai",
+      "Rufina Abdalla",
+      "Ruth Cleg"
+    ]
+  },
+  { "title": "S", "data": ["Santiago Sell"] },
+  { "title": "T", "data": ["Telma Caesa", "Tennie Hibbar", "Tora Abundi"] },
+  { "title": "V", "data": ["Versie Schindle"] },
+  { "title": "W", "data": ["Wanda Steige"] },
+  { "title": "Y", "data": ["Yetta Hedle", "Yolande Gras"] },
+  { "title": "Z", "data": ["Zada Ray"] }
+]
