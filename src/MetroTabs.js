@@ -1,11 +1,3 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
-
 import React, { Component } from "react";
 import {
   FlatList,
@@ -30,9 +22,9 @@ export default class MetroTabs extends Component {
   render() {
     console.log(this.props.screens);
     return (
-      <View style={{ paddingTop: 120, backgroundColor: "black" }}>
+      <View style={styles.container}>
         <FlatList
-          contentContainerStyle={{ paddingEnd: 20 }}
+          contentContainerStyle={styles.screenList}
           ref={screenList => (this.screenList = screenList)}
           horizontal
           snapToAlignment={"center"}
@@ -43,30 +35,24 @@ export default class MetroTabs extends Component {
           onScroll={this.handleScroll}
           showsHorizontalScrollIndicator={false}
           renderItem={({ item }) => (
-            <View style={styles.container}>{item.screen}</View>
+            <View style={styles.screenContainer}>{item.screen}</View>
           )}
           onViewableItemsChanged={this.onViewableItemsChanged}
         />
         <Animated.View
-          style={{
-            position: "absolute",
-            top: 0,
-            flexDirection: "row",
-            transform: [{ translateX: this.state.headerOffset }]
-          }}
+          style={[
+            styles.tabContainer,
+            { transform: [{ translateX: this.state.headerOffset }] }
+          ]}
         >
           {this.props.screens.map(item => {
             return (
               <TouchableOpacity onPress={() => this.headerPress(item)}>
                 <Text
-                  style={{
-                    color: "white",
-                    padding: 10,
-                    width: this.HEADER_WIDTH,
-                    marginTop: 20,
-                    fontSize: 50,
-                    opacity: this.state.currentPage === item.key ? 1 : 0.4
-                  }}
+                  style={[
+                    styles.tabText,
+                    this.state.currentPage === item.key && styles.tabTextActive
+                  ]}
                 >
                   {item.title}
                 </Text>
@@ -109,7 +95,30 @@ export default class MetroTabs extends Component {
 
 const styles = StyleSheet.create({
   container: {
+    paddingTop: 120,
+    backgroundColor: "black"
+  },
+  screenContainer: {
     height: Dimensions.get("window").height,
     width: Dimensions.get("window").width - 20
+  },
+  screenList: {
+    paddingEnd: 20
+  },
+  tabContainer: {
+    position: "absolute",
+    top: 0,
+    flexDirection: "row"
+  },
+  tabText: {
+    color: "white",
+    padding: 10,
+    width: this.HEADER_WIDTH,
+    marginTop: 20,
+    fontSize: 50,
+    opacity: 0.4
+  },
+  tabTextActive: {
+    opacity: 1
   }
 });
