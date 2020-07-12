@@ -7,9 +7,7 @@ A react native implementation for guidelines provided by the beautiful Windows P
 - top navigation bar
 - section list with section jump modal (contacts app)
 
-![ios](./screenshots/metro_tabs.gif?raw=true "ios")
-
-![ios](./screenshots/contacts.gif?raw=true "ios")
+![ios](./screenshots/metro_tabs.gif?raw=true "ios") ![ios](./screenshots/contacts.gif?raw=true "ios")
 
 ## credits
 
