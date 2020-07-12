@@ -7,7 +7,7 @@ export default StyleSheet.create({
   },
   sectionListContainer: {
     marginStart: 15,
-    marginBottom: 10,
+    paddingBottom: 30,
   },
   modalContainer: {
     flex: 1,

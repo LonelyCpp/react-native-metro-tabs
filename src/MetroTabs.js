@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
     backgroundColor: "black",
   },
   screenContainer: {
-    height: SCREEN_HEIGHT,
+    height: SCREEN_HEIGHT - 120, // account for container padding top
     width: SCREEN_SNAP_INTERVAL,
   },
   screenList: {

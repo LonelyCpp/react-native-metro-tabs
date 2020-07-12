@@ -7,10 +7,11 @@ export default class StoreListing extends Component {
     return (
       <View style={styles.container}>
         <FlatList
+          contentContainerStyle={styles.list}
           data={sampleStoreData}
           keyExtractor={(_, index) => String(index)}
           renderItem={({ item }) => (
-            <View style={styles.listContainer}>
+            <View style={styles.itemContainer}>
               <Image source={{ uri: item.icon }} style={itemStyles.image} />
               <View style={itemStyles.infoContainer}>
                 <Text style={itemStyles.title}>{item.title}</Text>
@@ -32,7 +33,10 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "black",
   },
-  listContainer: {
+  list: {
+    paddingBottom: 30,
+  },
+  itemContainer: {
     flexDirection: "row",
     marginStart: 10,
     marginBottom: 10,
