@@ -16,9 +16,9 @@ export default class App extends Component {
     return (
       <MetroTabs
         screens={[
-          { key: "1", title: "top free", screen: <StoreListing /> },
-          { key: "2", title: "Contacts", screen: <Contacts /> },
-          { key: "3", title: "top paid", screen: <StoreListing /> }
+          { key: "0", title: "top free", screen: <StoreListing /> },
+          { key: "1", title: "Contacts", screen: <Contacts /> },
+          { key: "2", title: "top paid", screen: <StoreListing /> },
         ]}
       />
     );

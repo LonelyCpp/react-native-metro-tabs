@@ -30,38 +30,38 @@ export default class StoreListing extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "black"
+    backgroundColor: "black",
   },
   listContainer: {
     flexDirection: "row",
     marginStart: 10,
-    marginBottom: 10
-  }
+    marginBottom: 10,
+  },
 });
 
 const itemStyles = StyleSheet.create({
   image: {
     height: 100,
-    width: 100
+    width: 100,
   },
   infoContainer: {
-    marginStart: 10
+    marginStart: 10,
   },
   title: {
     color: "white",
     fontSize: 25,
-    fontWeight: "300"
+    fontWeight: "300",
   },
   developer: {
     color: "white",
     fontSize: 13,
     fontWeight: "300",
-    marginTop: 3
+    marginTop: 3,
   },
   cost: {
     color: "white",
     fontSize: 13,
     fontWeight: "300",
-    marginTop: 3
-  }
+    marginTop: 3,
+  },
 });

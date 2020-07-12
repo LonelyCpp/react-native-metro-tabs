@@ -1,38 +1,45 @@
 import React, { useRef, useEffect, useState, useCallback } from "react";
 import {
-  StyleSheet,
   View,
   Text,
-  SectionList,
   Image,
-  TouchableOpacity,
   Modal,
-  Animated
+  Animated,
+  SectionList,
+  TouchableOpacity,
 } from "react-native";
 import sampleContactsData from "./contacts.json";
+import styles from "./styles";
 
 const alphabets = [];
 const alphabetsGroups = [];
 const alphabetsGroupSize = 6;
 
+// generate capital alphabets from their ascii code
 for (let i = 65; i < 91; i++) {
   alphabets.push(String.fromCharCode(i));
 }
+
+// group alphabets into a given group size
+// eg size 3 -> [[a, b, c], [d, e, f], ...]
 while (alphabets.length > 0) {
   alphabetsGroups.push(alphabets.splice(0, alphabetsGroupSize));
 }
 
-const availableChars = sampleContactsData.map(item => item.title);
+// list of only available characters
+// characters that have no contacts associated with it is greyed out
+// also used to find the position of a section in the list
+const availableChars = sampleContactsData.map((item) => item.title);
 
 const Contacts = () => {
   const listRef = useRef(null);
   const [showCharPicker, setShowCharPicker] = useState(false);
 
   const scrollToChar = useCallback(
-    char => {
+    (char) => {
       listRef.current.scrollToLocation({
-        sectionIndex: availableChars.findIndex(item => item === char[0]),
-        itemIndex: 0
+        sectionIndex: availableChars.findIndex((item) => item === char[0]),
+        itemIndex: 0,
       });
       setShowCharPicker(false);
     },
@@ -43,24 +50,24 @@ const Contacts = () => {
     <View style={styles.container}>
       <SectionList
         ref={listRef}
-        contentContainerStyle={styles.sectionListContainer}
-        keyExtractor={(item, index) => item + index}
         sections={sampleContactsData}
-        renderItem={item => <ContactItem {...item} />}
-        renderSectionHeader={sec => (
+        keyExtractor={(item, index) => item + index}
+        renderItem={(item) => <ContactItem {...item} />}
+        contentContainerStyle={styles.sectionListContainer}
+        renderSectionHeader={(sec) => (
           <SectionHeader {...sec} onPress={() => setShowCharPicker(true)} />
         )}
       />
       <Modal transparent visible={showCharPicker}>
         <TouchableOpacity
           activeOpacity={1}
-          onPress={() => setShowCharPicker(false)}
           style={styles.modalContainer}
+          onPress={() => setShowCharPicker(false)}
         >
-          {alphabetsGroups.map(item => {
+          {alphabetsGroups.map((item) => {
             return (
               <View style={styles.charRowContainer}>
-                {item.map(item => {
+                {item.map((item) => {
                   return (
                     <CharTile
                       char={item}
@@ -78,16 +85,14 @@ const Contacts = () => {
   );
 };
 
-const ContactItem = ({ item }) => {
-  const randomImgUrl = useRef(
-    `https://i.picsum.photos/id/${Math.floor(Math.random() * 100)}/200/200.jpg`
-  );
+const ContactItem = ({ item, index }) => {
+  const randomImgUrl = useRef(`https://picsum.photos/id/${index}/200/200`);
 
   return (
     <View style={styles.contactItemContainer}>
       <Image
-        source={{ uri: randomImgUrl.current }}
         style={styles.contactImage}
+        source={{ uri: randomImgUrl.current }}
       />
       <Text style={styles.contactName}>{item}</Text>
     </View>
@@ -96,7 +101,7 @@ const ContactItem = ({ item }) => {
 
 const SectionHeader = ({ section: { title }, onPress }) => {
   return (
-    <View style={{ backgroundColor: "black" }}>
+    <View>
       <TouchableOpacity
         onPress={onPress}
         activeOpacity={0.9}
@@ -109,11 +114,14 @@ const SectionHeader = ({ section: { title }, onPress }) => {
 };
 
 const CharTile = ({ char, onPress, enabled }) => {
-  const introAnim = useRef(new Animated.Value(1));
+  // start with 90 degrees
+  const introAnim = useRef(new Animated.Value(Math.PI / 2));
+
+  // trigger animation after mount
   useEffect(() => {
     Animated.timing(introAnim.current, {
       toValue: 0,
-      duration: 300
+      duration: 300,
     }).start();
   }, []);
 
@@ -125,17 +133,8 @@ const CharTile = ({ char, onPress, enabled }) => {
       <Animated.View
         style={[
           styles.charTile,
-          !enabled && { backgroundColor: "grey" },
-          {
-            transform: [
-              {
-                rotateX: introAnim.current.interpolate({
-                  inputRange: [0, 1],
-                  outputRange: ["0deg", "90deg"]
-                })
-              }
-            ]
-          }
+          !enabled && styles.charTileDisabled,
+          { transform: [{ rotateX: introAnim.current }] },
         ]}
       >
         <Text style={styles.charText}>{char}</Text>
@@ -143,66 +142,5 @@ const CharTile = ({ char, onPress, enabled }) => {
     </TouchableOpacity>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "black"
-  },
-  sectionListContainer: {
-    marginStart: 15,
-    marginBottom: 10
-  },
-  modalContainer: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#000000aa"
-  },
-  charRowContainer: {
-    flexDirection: "row"
-  },
-  contactItemContainer: {
-    marginVertical: 8,
-    flexDirection: "row",
-    alignItems: "center"
-  },
-  contactImage: {
-    height: 50,
-    width: 50
-  },
-  contactName: {
-    color: "white",
-    fontSize: 22,
-    fontWeight: "200",
-    marginStart: 16
-  },
-  sectionTile: {
-    backgroundColor: "#2d89ef",
-    height: 50,
-    width: 50,
-    marginVertical: 5,
-    justifyContent: "center",
-    alignItems: "center"
-  },
-  sectionTileText: {
-    color: "white",
-    fontSize: 18,
-    fontWeight: "bold"
-  },
-  charTile: {
-    backgroundColor: "#2d89ef",
-    height: 50,
-    width: 50,
-    margin: 5,
-    justifyContent: "center",
-    alignItems: "center"
-  },
-  charText: {
-    color: "white",
-    fontSize: 18,
-    fontWeight: "bold"
-  }
-});
 
 export default Contacts;
