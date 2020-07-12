@@ -33,6 +33,9 @@ export default StyleSheet.create({
     fontWeight: "200",
     marginStart: 16,
   },
+  sectionTileContainer: {
+    backgroundColor: "#000",
+  },
   sectionTile: {
     backgroundColor: "#2d89ef",
     height: 50,

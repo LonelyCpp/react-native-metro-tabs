@@ -101,7 +101,7 @@ const ContactItem = ({ item, index }) => {
 
 const SectionHeader = ({ section: { title }, onPress }) => {
   return (
-    <View>
+    <View style={styles.sectionTileContainer}>
       <TouchableOpacity
         onPress={onPress}
         activeOpacity={0.9}
